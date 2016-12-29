@@ -10,7 +10,6 @@
         android:id="@+id/vistaclientes_listamenu_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/vistaclientes_cerrarsesion_button"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

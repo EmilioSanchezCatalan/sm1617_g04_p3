@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">practica1</string>
+    <string name="app_name">Restaurant</string>
     <string name="autenticacion_boton">Send</string>
     <string name="autenticacion_ip">IP Address</string>
     <string name="autenticacion_pass">Password</string>
