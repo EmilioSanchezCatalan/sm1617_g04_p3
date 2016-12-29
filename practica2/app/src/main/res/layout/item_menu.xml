@@ -11,8 +11,9 @@
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimaryDark"
-        android:layout_alignParentStart="true">
+        android:background="@color/fondo2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
 
         <ImageView
             android:paddingLeft="5dp"
@@ -52,7 +53,7 @@
         android:layout_height="wrap_content"
         android:text="99.99"
         android:textSize="30dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/fondo2"
         android:textColor="@color/texto"
         android:id="@+id/item_menu_precio_textview"
         android:layout_below="@+id/linearLayout"

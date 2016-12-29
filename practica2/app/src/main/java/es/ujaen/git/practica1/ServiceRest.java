@@ -1,5 +1,8 @@
 package es.ujaen.git.practica1;
 
+import android.app.Activity;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -7,7 +10,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -48,9 +53,11 @@ public class ServiceRest implements Service {
             while ((leido = br.read(buffer)) > 0) {
                 res = res + new String(buffer, 0, leido);
             }
-        } catch (Exception ex) {
+        }catch (java.net.ConnectException ex){
+            res = "ERROR SERVER";
+        }catch (Exception ex) {
+            res = "ERROR";
             ex.printStackTrace();
-            res = ERROR;
         }
         return res;
     }

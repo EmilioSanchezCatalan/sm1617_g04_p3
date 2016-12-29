@@ -13,7 +13,7 @@ $sql = "SELECT * FROM mesa";
 $sqljson = "SELECT * FROM menu";
 $resultadojson = mysqli_query($link, $sqljson);
 while ($row = mysqli_fetch_assoc($resultadojson)) {
-	$lJson = $lJson."{\"cod_producto\":\"".$row["cod_producto"]."\",\"nombre\":\"". $row["nombre"]."\",\"imagen\":\"".$row["imagen"]."\",\"precio\":\"".$row["precio"]."\"},";
+	$lJson = $lJson."{\"cod_producto\":\"".$row["cod_producto"]."\",\"nombre\":\"". $row["nombre"]."\",\"imagen\":\"".$row["imagen"]."\",\"precio\":\"".$row["precio"]."\",\"descripcion\":\"".$row["descripcion"]."\"},";
 }
 $lJson = substr($lJson, 0, strlen($lJson)-1);
 $lJson = $lJson."]";

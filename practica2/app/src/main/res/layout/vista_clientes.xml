@@ -5,15 +5,6 @@
     android:orientation="vertical"
     android:background="@drawable/fondo">
 
-    <ImageButton
-        android:id="@+id/vistaclientes_cerrarsesion_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/button_logout"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
     <ListView
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:id="@+id/vistaclientes_listamenu_listview"

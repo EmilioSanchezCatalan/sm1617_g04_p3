@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:ems="8"
                     android:text="@string/autenticacion_user"
-                    android:textColor="@color/ntext"
+                    android:textColor="@color/texto"
                     android:textSize="@dimen/tamaño_letra_land" />
 
                 <EditText
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:ems="8"
                     android:text="@string/autenticacion_pass"
-                    android:textColor="@color/ntext"
+                    android:textColor="@color/texto"
                     android:textSize="@dimen/tamaño_letra_land" />
 
                 <EditText
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:ems="8"
                     android:text="@string/autenticacion_ip"
-                    android:textColor="@color/ntext"
+                    android:textColor="@color/texto"
                     android:textSize="@dimen/tamaño_letra_land" />
 
                 <EditText
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:ems="8"
                     android:text="@string/autenticacion_port"
-                    android:textColor="@color/ntext"
+                    android:textColor="@color/texto"
                     android:textSize="@dimen/tamaño_letra_land" />
 
                 <EditText

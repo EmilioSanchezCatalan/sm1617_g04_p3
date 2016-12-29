@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 $auth = false;
-$expires = mktime(date("H")+1, date("i"), date("s"), date("m")  , date("d"), date("Y"));
+$expires = mktime(date("H"), date("i")+2, date("s"), date("m")  , date("d"), date("Y"));
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
     $cod_mesa = $_GET['cod_mesa'];
     $numero_session = $_GET['num_session'];

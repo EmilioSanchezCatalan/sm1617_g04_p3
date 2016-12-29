@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by windic on 28/12/2016.
- */
 
 public class AdapterMenuList extends BaseAdapter {
     protected Activity activity;
@@ -68,7 +65,10 @@ public class AdapterMenuList extends BaseAdapter {
         description.setText(dir.getDescripcion());
 
         TextView precio = (TextView) v.findViewById(R.id.item_menu_precio_textview);
+        precio.setText(Double.toString(dir.getPrecio()));
 
+        ImageView imagen = (ImageView) v.findViewById(R.id.item_menu_imagen_imageview);
+        imagen.setImageBitmap(dir.getImagen());
         return v;
     }
 }

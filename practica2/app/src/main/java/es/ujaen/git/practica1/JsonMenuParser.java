@@ -1,5 +1,7 @@
 package es.ujaen.git.practica1;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.JsonReader;
 
 import java.io.IOException;
@@ -17,9 +19,12 @@ public class JsonMenuParser {
     public Producto leerProducto(JsonReader reader) throws IOException{
         int cod_producto = 0;
         String nombre = null;
-        String imagen = null;
+        String simagen = null;
         double precio = 0;
         String descripcion = null;
+
+
+
         reader.beginObject();
         while (reader.hasNext()){
             String name = reader.nextName();
@@ -31,7 +36,7 @@ public class JsonMenuParser {
                     nombre = reader.nextString();
                     break;
                 case "imagen":
-                    imagen = reader.nextString();
+                    simagen = reader.nextString();
                     break;
                 case "precio":
                     precio = reader.nextDouble();
@@ -45,7 +50,7 @@ public class JsonMenuParser {
             }
         }
         reader.endObject();
-        return new Producto(cod_producto,nombre,imagen,precio,descripcion);
+        return new Producto(cod_producto,nombre,null,simagen,precio,descripcion);
     }
     public ArrayList leerArrayMenu(JsonReader reader) throws  IOException{
         ArrayList productos = new ArrayList();

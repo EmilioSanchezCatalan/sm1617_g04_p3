@@ -82,7 +82,7 @@ public class AuthQRFragment extends Fragment implements Service {
                     Autenticator auth = new Autenticator();
                     auth.execute(parseQR.getCod_mesa(), parseQR.getNum_session());
                 } else {
-                    Toast.makeText(getActivity(), R.string.fail_auth, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.fail_qr, Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(getActivity(), R.string.no_qr, Toast.LENGTH_SHORT).show();
@@ -122,7 +122,9 @@ public class AuthQRFragment extends Fragment implements Service {
                 sharedEditor.commit();
                 Intent intent = new Intent(getActivity(), VistaClientes.class);
                 startActivity(intent);
-            } else {
+            } else if (s.contains("SERVER")){
+                Toast.makeText(getActivity(), R.string.fail_server, Toast.LENGTH_SHORT).show();
+            }else {
                 Toast.makeText(getActivity(), R.string.fail_auth, Toast.LENGTH_SHORT).show();
             }
 

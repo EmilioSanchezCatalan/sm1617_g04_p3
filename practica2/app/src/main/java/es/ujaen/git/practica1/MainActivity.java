@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements Service {
         adapter.addFragment(new AuthFragment(), getString(R.string.menu_1));
         viewPager.setAdapter(adapter);
         tabLayout = (TabLayout) findViewById(R.id.activity_main_tabs_tablayout);
+        tabLayout.setSelectedTabIndicatorColor(getColor(R.color.texto_unselected));
+        tabLayout.setTabTextColors(R.color.texto_unselected,R.color.texto);
         tabLayout.setupWithViewPager(viewPager);
 
     }

@@ -18,6 +18,7 @@ import java.util.List;
 public class Listar implements Runnable, Service, Cliente {
 
     Handler mhandler;
+
     public Listar(Handler handler) {
         mhandler = handler;
     }
@@ -30,8 +31,7 @@ public class Listar implements Runnable, Service, Cliente {
         Bundle datos = new Bundle();
         datos.putString("key", jMenu);
         msg.setData(datos);
-        mhandler.sendMessageDelayed(msg, 3000);
-
+        mhandler.sendMessage(msg);
 
 
     }
@@ -44,7 +44,7 @@ public class Listar implements Runnable, Service, Cliente {
     @Override
     public String listar() {
         Datos datos = new Datos(1);
-        Mensaje mensaje = new Mensaje(1,datos);
+        Mensaje mensaje = new Mensaje(1, datos);
         ServiceRest rest = new ServiceRest(mensaje.toString());
         return rest.reqGet();
     }

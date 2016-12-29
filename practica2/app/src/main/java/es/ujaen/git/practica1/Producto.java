@@ -1,5 +1,7 @@
 package es.ujaen.git.practica1;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by windic on 27/12/2016.
  */
@@ -7,14 +9,16 @@ package es.ujaen.git.practica1;
 public class Producto {
     int cod_producto;
     String nombre;
-    String imagen;
+    Bitmap imagen;
+    String simagen;
     double precio;
     String descripcion;
 
-    public Producto(int cod_producto, String nombre, String imagen, double precio, String descripcion) {
+    public Producto(int cod_producto, String nombre, Bitmap imagen, String simagen, double precio, String descripcion) {
         this.cod_producto = cod_producto;
         this.nombre = nombre;
         this.imagen = imagen;
+        this.simagen = simagen;
         this.precio = precio;
         this.descripcion = descripcion;
     }
@@ -35,13 +39,17 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getImagen() {
+    public Bitmap getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(Bitmap imagen) {
         this.imagen = imagen;
     }
+
+    public String getSimagen(){return simagen; }
+
+    public void setSimagen(){this.simagen = simagen; }
 
     public double getPrecio() {
         return precio;
