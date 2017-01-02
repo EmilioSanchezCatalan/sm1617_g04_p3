@@ -50,7 +50,7 @@ public class VistaClientes extends AppCompatActivity implements Service {
             Handler handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    Bundle datos = msg.getData();
+                    final Bundle datos = msg.getData();
                     InputStream stream = new ByteArrayInputStream(datos.getString("key").getBytes(StandardCharsets.UTF_8));
                     JsonMenuParser parser = new JsonMenuParser();
                     try {
@@ -58,8 +58,40 @@ public class VistaClientes extends AppCompatActivity implements Service {
                     } catch (IOException ex) {
 
                     }
-                    CargaImagen load = new CargaImagen();
-                    load.execute();
+                    final Handler handlerimagen = new Handler(){
+                        @Override
+                        public void handleMessage(Message msg) {
+                            Bundle datosimagen = msg.getData();
+                            for (int i=0 ; i< datosimagen.getInt("size"); i++){
+                                byte[] byteArray = datosimagen.getByteArray("imagen" + i);
+                                productos.get(i).setImagen(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length));
+                            }
+                            AdapterMenuList adapter = new AdapterMenuList(VistaClientes.this, productos);
+                            listView.setAdapter(adapter);
+                        }
+                    };
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            BitmapFactory.Options bmOptions;
+                            bmOptions = new BitmapFactory.Options();
+                            bmOptions.inSampleSize = 1;
+                            Message msg = new Message();
+                            Bundle datos = new Bundle();
+                            datos.putInt("size", productos.size());
+                            for (int i = 0; i < productos.size(); i++) {
+                                Bitmap imagen;
+                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                LoadImagen.loadBitmap("http://" + servidor + ":" + port + "/" + servicio
+                                        + productos.get(i).getSimagen(), bmOptions).compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                byte[] byteArray = stream.toByteArray();
+                                datos.putByteArray("imagen"+i, byteArray);
+                            }
+                            msg.setData(datos);
+                            handlerimagen.sendMessage(msg);
+
+                        }
+                    }.start();
                 }
             };
             new Thread(new Listar(handler)).start();
@@ -116,34 +148,20 @@ public class VistaClientes extends AppCompatActivity implements Service {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        String nombre, descripcion;
+        Bitmap imagen;
+        double precio;
         for (int i = 0; i < savedInstanceState.getInt("size"); i++) {
+
             byte[] byteArray = savedInstanceState.getByteArray("imagen" + i);
-            productos.get(i).setNombre(savedInstanceState.getString("nombre" + i));
-            productos.get(i).setImagen(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length));
-            productos.get(i).setPrecio(savedInstanceState.getDouble("precio"+i));
-            productos.get(i).setDescripcion(savedInstanceState.getString("descripcion"+i));
+            nombre = savedInstanceState.getString("nombre" + i);
+            imagen = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            precio = savedInstanceState.getDouble("precio"+i);
+            descripcion = savedInstanceState.getString("descripcion"+i);
+            productos.add(new Producto(i, nombre, imagen, null, precio, descripcion));
         }
         AdapterMenuList adapter = new AdapterMenuList(VistaClientes.this, productos);
         listView.setAdapter(adapter);
     }
 
-    class CargaImagen extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-            BitmapFactory.Options bmOptions;
-            bmOptions = new BitmapFactory.Options();
-            bmOptions.inSampleSize = 1;
-            for (int i = 0; i < productos.size(); i++) {
-                productos.get(i).setImagen(LoadImagen.loadBitmap("http://" + servidor + ":" + port + "/" + servicio
-                        + productos.get(i).getSimagen(), bmOptions));
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void producto) {
-            AdapterMenuList adapter = new AdapterMenuList(VistaClientes.this, productos);
-            listView.setAdapter(adapter);
-        }
-    }
 }

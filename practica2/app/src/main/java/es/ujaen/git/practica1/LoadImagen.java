@@ -14,7 +14,7 @@ import java.net.URLConnection;
  * Created by windic on 28/12/2016.
  */
 
-public class LoadImagen {
+public class LoadImagen{
     public static Bitmap loadBitmap(String URL, BitmapFactory.Options options) {
         Bitmap bitmap = null;
         InputStream in;
@@ -35,9 +35,9 @@ public class LoadImagen {
             URLConnection conexion = url.openConnection();
             conexion.connect();
             in = conexion.getInputStream();
-        }catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return in;
