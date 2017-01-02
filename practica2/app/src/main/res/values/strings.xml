@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Restaurante</string>
+    <string name="app_name">Cibus App</string>
     <string name="autenticacion_user">Usuario</string>
     <string name="autenticacion_user_hint">Nombre de usuario</string>
     <string name="autenticacion_pass">Contraseña</string>
