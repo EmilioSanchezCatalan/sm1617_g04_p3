@@ -41,12 +41,19 @@ public class VistaClientes extends AppCompatActivity implements Service {
     ListView listView;
     ArrayList<Producto> productos = new ArrayList();
 
+    /**
+     *  Metodo que se encarga de crear la actividad de vistaclientes.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista_clientes);
         listView = (ListView) findViewById(R.id.vistaclientes_listamenu_listview);
         if (savedInstanceState == null) {
+            /**
+             * En este handler recibimos el json y leemos los datos.
+             */
             Handler handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
@@ -58,6 +65,11 @@ public class VistaClientes extends AppCompatActivity implements Service {
                     } catch (IOException ex) {
 
                     }
+                    /**
+                     * En este handler recibimos las imagenes en bytes de los datos pasados por el handle y los
+                     * codificamos en bitmap. Posteriormente se los pasamos a la vista.
+                     */
+
                     final Handler handlerimagen = new Handler(){
                         @Override
                         public void handleMessage(Message msg) {
@@ -70,6 +82,9 @@ public class VistaClientes extends AppCompatActivity implements Service {
                             listView.setAdapter(adapter);
                         }
                     };
+                    /**
+                     * Hebra que descarga las imagenes del servidor y envia las imagenes al handler en arrays de bytes.
+                     */
                     new Thread(){
                         @Override
                         public void run() {
@@ -100,6 +115,9 @@ public class VistaClientes extends AppCompatActivity implements Service {
     }
 
     @Override
+    /**
+     * Metodo que controla el evento del botón retroceder para cerrar la aplicación.
+     */
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == event.KEYCODE_BACK) {
             finishAffinity();
@@ -108,11 +126,19 @@ public class VistaClientes extends AppCompatActivity implements Service {
     }
 
     @Override
+    /**
+     * Metodo para crear un menu en la toolbar.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    /**
+     * Metodo para eliminar el tiempo de exipracion y el sesion_id una vez pulsamos el boton de cerrar sesion.
+     * @param item boton cerrar sesion.
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -131,6 +157,10 @@ public class VistaClientes extends AppCompatActivity implements Service {
     }
 
     @Override
+    /**
+     * Metodo para guardar en un bundle los productos para cuando se destruya la interfaz.
+     * Así evitamos tener que volver a realizar una petición al servidor.
+     */
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("size", productos.size());
@@ -146,6 +176,9 @@ public class VistaClientes extends AppCompatActivity implements Service {
     }
 
     @Override
+    /**
+     * Metodo para recuperar los productos al crear la actividad.
+     */
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         String nombre, descripcion;

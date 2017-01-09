@@ -48,7 +48,7 @@ public class Listar implements Runnable, Service, Cliente {
     }
 
     /**
-     *
+     * Metodo para llamar a listar.php
      * @return devuelve la respuesta del servidor.
      */
     @Override

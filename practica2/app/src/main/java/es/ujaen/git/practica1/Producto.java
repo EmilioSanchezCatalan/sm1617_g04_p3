@@ -6,6 +6,10 @@ import android.graphics.Bitmap;
  * Created by windic on 27/12/2016.
  */
 
+/**
+ * Clase para describir las caracteristicas de un producto.
+ */
+
 public class Producto {
     int cod_producto;
     String nombre;

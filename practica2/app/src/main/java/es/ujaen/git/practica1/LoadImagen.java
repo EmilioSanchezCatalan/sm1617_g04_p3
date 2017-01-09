@@ -19,6 +19,7 @@ import java.net.URLConnection;
 
 public class LoadImagen{
     /**
+     * Método para crear un bitmap a partir de la url donde guardamos las imagenes.
      * @param URL dirección donde se ubican las imagenes.
      * @param options
      * @return devuelve un bitmap de la imagen descargada
@@ -35,6 +36,11 @@ public class LoadImagen{
         return bitmap;
     }
 
+    /**
+     * Método para realizar  la conexión con el servidor.
+     * @param urlget url para establecer conexión al servidor.
+     * @return
+     */
     private static InputStream OpenHttpConnection(String urlget) {
         urlget = urlget.replace(" ", "%20");
         InputStream in = null;

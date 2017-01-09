@@ -20,7 +20,7 @@ import java.util.List;
 public class JsonMenuParser {
 
     /**
-     *
+     * Método para leer datos de cada producto del json recibodo. Estos datos los guardamos en un objeto de tipo producto.
      * @param reader clase para leer un json
      * @return devuelve un objecto de la clase producto
      * @throws IOException
@@ -63,7 +63,7 @@ public class JsonMenuParser {
     }
 
     /**
-     *
+     * Metodo para guardar en un arraylist los objetos producto leidos en el metodo leerProducto.
      * @param reader clase para leer un json
      * @return devuelve un Arraylist de los productos leidos.
      * @throws IOException
@@ -79,7 +79,7 @@ public class JsonMenuParser {
     }
 
     /**
-     *
+     * Metodo para guardar en un arraylist los objetos producto leidos en el metodo leerProducto.
      * @param in inputStream que almacena los datos que se van a parsear
      * @return devuelve un arraylist de la clase producto con los datos
      *         parseados.

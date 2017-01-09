@@ -32,14 +32,24 @@ public class AdapterMenuList extends BaseAdapter {
     }
 
     @Override
+    /**
+     * Metodo para devolver el tamaño del arraylist items.
+     */
     public int getCount() {
         return items.size();
     }
 
+    /**
+     * Metodo para vaciar array.
+     */
     public void clear() {
         items.clear();
     }
 
+    /**
+     * Metodo para guardar los objetos del arraylist producto en el arraylist item.
+     * @param producto arraylist tipo producto
+     */
     public void addAll(ArrayList<Producto> producto) {
         for (int i = 0; i < producto.size(); i++) {
             items.add(producto.get(i));
