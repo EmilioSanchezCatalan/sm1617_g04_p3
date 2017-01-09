@@ -11,10 +11,18 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by windic on 28/12/2016.
+ * @author Emilio Sánchez Catalán y Víctor Manuel Pérez Cámara
+ * @version 1.0
+ *
+ * Clase encargada de cargar las imagenes del servidor
  */
 
 public class LoadImagen{
+    /**
+     * @param URL dirección donde se ubican las imagenes.
+     * @param options
+     * @return devuelve un bitmap de la imagen descargada
+     */
     public static Bitmap loadBitmap(String URL, BitmapFactory.Options options) {
         Bitmap bitmap = null;
         InputStream in;

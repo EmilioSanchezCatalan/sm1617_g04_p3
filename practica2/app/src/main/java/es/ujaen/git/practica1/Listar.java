@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by windic on 27/12/2016.
+ * @author Emilio Sánchez Catalán y Víctor Manuel Pérez Cámara
+ * @version 1.0
+ *
+ * Clase encargada de hacer la conexión con el servidor para recibir
+ * el listado del menu
  */
 
 public class Listar implements Runnable, Service, Cliente {
@@ -25,8 +29,10 @@ public class Listar implements Runnable, Service, Cliente {
 
     @Override
     public void run() {
-
+        //Acceso a la informacion del servidor
         String jMenu = listar();
+
+        //Envio de datos mediante handler
         Message msg = new Message();
         Bundle datos = new Bundle();
         datos.putString("key", jMenu);
@@ -41,6 +47,10 @@ public class Listar implements Runnable, Service, Cliente {
         return null;
     }
 
+    /**
+     *
+     * @return devuelve la respuesta del servidor.
+     */
     @Override
     public String listar() {
         Datos datos = new Datos(1);

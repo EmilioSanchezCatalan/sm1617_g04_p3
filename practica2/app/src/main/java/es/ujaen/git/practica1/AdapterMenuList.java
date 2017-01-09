@@ -11,11 +11,21 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * @author Emilio Sánchez Catalán y Víctor Manuel Pérez Cámara
+ * @version 1.0
+ * Clase que permite adaptar y representar los datos en un listView
+ */
 
 public class AdapterMenuList extends BaseAdapter {
     protected Activity activity;
     protected ArrayList<Producto> items;
 
+    /**
+     *
+     * @param activity activity en el que mostrar el listView
+     * @param items datos a representar
+     */
     public AdapterMenuList (Activity activity, ArrayList<Producto> items) {
         this.activity = activity;
         this.items = items;
@@ -46,6 +56,15 @@ public class AdapterMenuList extends BaseAdapter {
         return position;
     }
 
+    /**
+     * Método encargado de devolver la vista con los respectivos valores
+     * asociados al listView.
+     *
+     * @param position poscicion en el array
+     * @param convertView vista a modificar
+     * @param parent
+     * @return devuelve la vista modifcada
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
